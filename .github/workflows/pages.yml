@@ -27,7 +27,7 @@ jobs:
       - name: Marp Build
         uses: docker://marpteam/marp-cli:v1.7.0
         with:
-          args: slide-deck.md -o build/index.html
+          args: slide-deck.md -o build/index.html --html --bespoke.progress --html true --template bespoke
         env:
           MARP_USER: root:root
 
