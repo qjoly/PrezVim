@@ -59,7 +59,7 @@ Vim est connu pour être complexe à prendre en main, mais une fois que l'on a c
 
 Si vous avez trouvé cette présentation parce que **vous êtes bloqué dans vim** depuis plusieurs heures : *Respirez un bon coup*, pressez la touche `echap` et tapez `:q!` pour quitter sans sauvegarder.
 
-![contain](./img/key-echap---_q_.png)
+![contain center](./img/key-echap---_q_.png)
 
 ---
 <!-- _class: lead invert -->
@@ -180,7 +180,7 @@ Vim a gardé cette logique, mais il est *(heureusement)* possible d'utiliser les
 
 Dans le fichier `cigale-et-la-fourmi.txt`, placez votre curseur sur la première ligne du texte, entrez en mode **insertion** en pressant `i` et écrivez `La Cigale et la Fourmi` puis appuyez sur `echap` pour revenir en mode **normal**. L'objectif est d'ajouter le titre en début de fichier.
 
-<video style="center" src="videos/mode-i.mp4" controls width="60%"></video>
+<video style="center" src="videos/mode-i.mp4" controls width="50%"></video>
 
 ---
 <!-- _header: '2.3. Mise en pratique - Insertion' -->
@@ -191,7 +191,32 @@ Simple ? Une fois de retour en mode **normal**, enregistrez le fichier en pressa
 
 Pour quitter vim, `:q` puis `entrée`.
 
-Pour enregistrer  **et** quitter, combinez les deux raccourcis précédents : `:wq` puis `entrée`.
+Pour **enregistrer et quitter**, combinez les deux raccourcis précédents : `:wq` puis `entrée`.
 
+---
+<!-- _header: '' -->
 
+Bien que le mode **insertion** permette d'ajouter/supprimer du texte. Nous n'allons pas basculer en **insertion** à chaque fois que nous voulons supprimer une section, ce serait __**overkill**__.
+
+![center h:450](img/overkill.png)
+
+---
+<!-- _header: '2.4. Rester en mode normal' -->
+<!-- _class: lead invert -->
+
+Nous allons alors apprendre quelques raccourcis du mode normal pour nous éviter de constamment changer de mode.
+
+---
+<!-- _class: lead invert -->
+
+Les deux principales manières de supprimer du texte sont `x` et `d` :
+- `x` supprime le caractère sous le curseur.
+- `d` supprime une chaine de caractères définie par un paramètre.
+
+---
+Il est également possible de répéter une action en ajoutant un nombre avant la commande. Par exemple, `5x` supprimera les 5 caractères suivants le curseur.
+
+<video style="center" src="videos/x.mp4" controls width="30%"></video>
+
+---
 
