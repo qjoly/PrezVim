@@ -33,7 +33,7 @@ blockquote:after{
 }
 video::-webkit-media-controls {
     will-change: transform;
-  }
+}
 </style>
 
 <!-- _class: lead invert -->
@@ -219,4 +219,38 @@ Il est également possible de répéter une action en ajoutant un nombre avant l
 <video style="center" src="videos/x.mp4" controls width="30%"></video>
 
 ---
+<!-- _class: lead invert -->
+
+Mais avant d'apprendre à supprimer via `d`. Nous allons d'abord **apprendre à nous déplacer de manière efficace**.
+
+---
+
+En mode **normal**, en pressant `0` ou `^`, le curseur se positionne en début de ligne. 
+
+- `gg`, au début du fichier
+- `G`, à la fin du fichier
+- `w`, au début du prochain mot
+- `e`, à la fin du mot actuel/suivant
+- `b`, au début du mot précédent/actuel 
+- `:10` ou `10G`, à la ligne 10
+
+---
+
+Ces mêmes commandes peuvent servir de paramètre, comme pour l'action `d`.
+
+Essayez alors de supprimer des mots via `dw`, `de` et `db`.
+
+Idem, pour des lignes entières : `d$`, `d0`, ou `dd`
+
+---
+
+Il est également possible d'utiliser les commandes (commençant par un `:`). Pour `d`, la syntaxe est `:[debut],[fin]d`. 
+Exemple:
+- `:5,10d` va supprimer entre les lignes 5 et 10
+
+En mode commande, vous avez aussi accès à ces caractères:
+- . -> La ligne du curseur
+- ＄-> la dernière ligne
+- % -> toutes les lignes
+
 
