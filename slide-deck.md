@@ -6,6 +6,7 @@ paginate: true
 class: invert
 header: 'Découvrir Vim'
 footer: "[Site de l'auteur](https://thebidouilleur.xyz)"
+titre: 'CyberPrez #03 - VIM'
 ---
 
 <style>
@@ -125,8 +126,8 @@ Aujourd'hui, Vim continue d'évoluer grâce à une communauté active qui propos
 
 Il reste un outil essentiel pour les développeurs et les utilisateurs expérimentés qui apprécient sa puissance et sa capacité à optimiser leur flux de travail.
 
-<p style="font-size:15px">L'intégralité des donations vers Vim sont redirigées vers l'ICCF Holand pour aider des enfants en Uganda</p>
-<p style="font-size:15px; müargin-top:0px; padding-top:0px">En effectuant une donation, vous pouvez voter pour les futures fonctionnalitées de Vim</p>
+<p style="font-size:15px">L'intégralité des donations vers Vim sont redirigées vers l'ICCF Holand pour aider des enfants en Ouganda.</p>
+<p style="font-size:15px; müargin-top:0px; padding-top:0px">Vous pouvez voter pour les futures fonctionnalitées de Vim après une donation.</p>
 
 ---
 <!-- _class: lead invert -->
@@ -147,9 +148,9 @@ Maintenant que le cours d'histoire est terminé, passons à la pratique.
 
 N'oubliez pas que VIM s'apprend avant-tout par la **pratique**. Il est donc conseillé de suivre cette présentation en même temps que vous lisez les slides.
 
-Ne désespérez pas si vous oubliez certains raccourcis, vous développerez des automatismes au fûr et à mesure que vous l'utiliserez.
+**Ne désespérez pas.** Vous développerez des automatismes au fur et à mesure que vous l'utiliserez.
 
-![center h:200](./img/vim-curve.jpeg)
+![center h:300](./img/vim-curve.jpeg)
 
 <!-- Source : https://www.freecodecamp.org/news/learn-linux-vim-basic-features-19134461ab85/ -->
 
@@ -158,23 +159,24 @@ Ne désespérez pas si vous oubliez certains raccourcis, vous développerez des 
 
 ## 2.1. Les modes
 
-La première chose à savoir sur Vim, c'est qu'il existe plusieurs modes avec lequels vous allez régulièrement permuter.
+La première chose à savoir sur Vim, c'est qu'il existe plusieurs modes avec lesquels vous allez régulièrement permuter.
 
-Vim possède plusieurs modes, chacun ayant un rôle différent. Il est important de comprendre comment fonctionnent les modes pour pouvoir utiliser Vim correctement.
+Chaque mode possède un rôle différent. Il est important de comprendre comment fonctionnent les modes pour pouvoir utiliser Vim correctement.
 
 Nous utiliserons principalement 3 modes : le mode **normal**, le mode **insertion** et le mode **visuel**.
 
 - Le mode **normal** est celui par défaut, il permet de lancer des 'macros' et des 'commandes'.
-- Le mode **insertion** peut se lancer en pressant '`i`' pour éditer un texte.
-- et le mode **visuel** en appuyant sur '`v`' pour modifier une sélection.
+- Le mode **insertion** peut se lancer en pressant '`i`' afin d'éditer un texte sans raccourcis.
+- Le mode **visuel** s'active en appuyant sur '`v`', il permet de modifier une sélection.
 
 ---
 <!-- _header: '2.1. Les modes' -->
 <!-- _footer: '' -->
 
+
 Le mode dans lequel nous nous trouvons est indiqué en bas à gauche de l'écran. Si vous êtes en mode **insertion**, vous devriez voir `-- INSERT --` en bas à gauche de l'écran.
 
-![center h:200](./img/mode-vim.png)
+![center h:300](./img/mode-vim.png)
 
 Le mode **visuel** sera affiché de la même manière, avec `-- VISUAL --`.
 
@@ -191,6 +193,7 @@ Pour l'ouvrir avec vim, tapez `vim cigale-et-la-fourmi.txt` dans votre terminal 
 ---
 <!-- _header: '2.2. Les déplacements' -->
 
+## Apprenons à se déplacer dans un fichier
 À l'origine, les touches directionnelles n'existaient pas. Pour se déplacer dans le texte, il fallait utiliser les touches `h`, `j`, `k` et `l` pour se déplacer respectivement à gauche, en bas, en haut et à droite.
 
 ![center h:250 opacity:.5](./img/./hjkl.png)
@@ -202,14 +205,14 @@ Vim a gardé cette logique, mais il est *(heureusement)* possible d'utiliser les
 
 Dans le fichier `cigale-et-la-fourmi.txt`, placez votre curseur sur la première ligne du texte, entrez en mode **insertion** en pressant `i` et écrivez `La Cigale et la Fourmi` puis appuyez sur `echap` pour revenir en mode **normal**. L'objectif est d'ajouter le titre en début de fichier.
 
-<video style="center" src="videos/mode-i.mp4" controls width="50%"></video>
+<video style="center" src="videos/mode-i.mp4" controls width="80%"></video>
 
 ---
 <!-- _header: '2.3. Mise en pratique - Insertion' -->
 
 Simple ? Une fois de retour en mode **normal**, enregistrez le fichier en pressant `:w` puis `entrée`.
 
-<video style="center" src="videos/save.mp4" controls width="30%"></video>
+<video style="center" src="videos/save.mp4" controls width="60%"></video>
 
 Pour quitter vim, `:q` puis `entrée`.
 
@@ -238,7 +241,7 @@ Les deux principales manières de supprimer du texte sont `x` et `d` :
 ---
 Il est également possible de répéter une action en ajoutant un nombre avant la commande. Par exemple, `5x` supprimera les 5 caractères suivants le curseur.
 
-<video style="center" src="videos/x.mp4" controls width="30%"></video>
+<video style="center" src="videos/x.mp4" controls width="80%"></video>
 
 ---
 <!-- _class: lead invert -->
@@ -256,7 +259,6 @@ En mode **normal**, en pressant `0` ou `^`, le curseur se positionne en début d
 - `b`, au début du mot précédent/actuel 
 - `:10` ou `10G`, à la ligne 10
 
----
 
 Ces mêmes commandes peuvent servir de paramètre, comme pour l'action `d`*(delete)*.
 
@@ -266,15 +268,15 @@ Idem, pour des lignes entières : `d$`, `d0`, ou `dd`
 
 ---
 
-Il est également possible d'utiliser les commandes *(commençant par `:`)*. Pour `d`, la syntaxe est `:[debut],[fin]d`. 
+l'instruction `d` est également disponible en tant que commandes *(commençant par `:`)*. Pour `d`, la syntaxe est `:[debut],[fin]d`. 
 
-Exemple:
+Exemple :
 - `:5,10d` va tout supprimer entre les lignes 5 et 10
 
-à retenir qu'il existe certains caractères spéciaux:
-- . -> La ligne du curseur
-- ＄-> la dernière ligne
-- % -> toutes les lignes
+à retenir qu'il existe certains caractères spéciaux pour définir le début et la fin :
+- `.`  → La ligne du curseur
+- `＄` → la dernière ligne
+- `%`  → toutes les lignes
 
 ---
 <!-- _class: lead invert -->
@@ -283,14 +285,14 @@ Si vous voulez annuler une action, utilisez `u`*(undo)* et `U` pour la refaire.
 
 ---
 <!-- _header: '1. Exercice' -->
-
+<br><br><br><br>
 Vous savez vous déplacer, supprimer des blocs et refaire une action.
 
 Comme exercice, ouvrez de nouveau `la-cigale-et-la-fourmi.txt`, placez vous à la 4ème ligne.
 
-Placez vous sur *__b__ise* avec une seule action puis supprimez le *la* en une seule action. (répétition autorisée, voir rappel)
+Placez-vous sur ***b**ise* avec une seule action puis supprimez le *la* en une seule action. (répétition autorisée, voir rappel)
 
-rappel: en plaçant un chiffre devant une action, celle-ci se répètera. *(ex: `5x`)*
+*Rappel: en plaçant un chiffre devant une action, celle-ci se répètera. *(ex: `5x`)**
 
 ---
 
