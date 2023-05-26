@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  cyberprez03:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    image: qjoly/vim
+    container_name: cyberprez03
+    ports:
+      - 8080:80
