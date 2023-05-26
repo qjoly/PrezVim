@@ -10,6 +10,9 @@ footer: "[Site de l'auteur](https://thebidouilleur.xyz)"
 
 <style>
 
+p, li {
+    font-size: 25px;
+}
 video {
   display: block;
   margin: auto;
@@ -46,6 +49,11 @@ CyberPrez #03 - VIM
 
 ---
 
+# Sommaire
+- Qu'est-ce que Vim?
+    - [Comment quitter vim?](#4)
+    - [Histoire de vim](#7)
+---
 <!-- transition: fade -->
 <!-- _class: lead invert -->
 
@@ -54,12 +62,15 @@ CyberPrez #03 - VIM
 Vim est un utilitaire en ligne de commande permettant de modifier des fichiers texte. Celui-ci est un dérivé de l'éditeur `vi`, qui est intégré dans la plupart des systèmes Unix-like.
 
 ---
+<br>
 
 Vim est connu pour être complexe à prendre en main, mais une fois que l'on a compris les bases, il est très puissant et permet de gagner beaucoup de temps.
 
 Si vous avez trouvé cette présentation parce que **vous êtes bloqué dans vim** depuis plusieurs heures : *Respirez un bon coup*, pressez la touche `echap` et tapez `:q!` pour quitter sans sauvegarder.
 
 ![contain center](./img/key-echap---_q_.png)
+
+*Si vous voulez sauvegarder avant de quitter le document, pressez la touche `echap`, puis `:wq`*
 
 ---
 <!-- _class: lead invert -->
@@ -78,6 +89,7 @@ Si vous avez trouvé cette présentation parce que **vous êtes bloqué dans vim
 
 ---
 <!-- _header: '1. Histoire de Vim' -->
+<!-- _class: lead invert -->
 
 
 Vim, qui signifie **"Vi Improved"** *(Vi amélioré)*, est l'editeur de texte le plus utilisé en ligne de commande. Son histoire remonte aux années 1970 avec l'apparition d'un éditeur de texte appelé Vi *(Visual Editor)* développé par *Bill Joy* pour le système d'exploitation Unix.
@@ -91,6 +103,7 @@ Vi est devenu populaire parmi les programmeurs et les administrateurs système g
 En *1991*, *Bram Moolenaar* a créé Vim en se basant sur le code source de Vi. Vim était destiné à être une version améliorée de Vi, incorporant de nouvelles fonctionnalités et offrant une plus grande flexibilité.
 
 ![auto](./img/Bram-Moolenaar.png)
+<p style="font-size:10px"> C'est lui </p>
 
 ---
 <!-- _class: lead invert -->
@@ -99,6 +112,8 @@ En *1991*, *Bram Moolenaar* a créé Vim en se basant sur le code source de Vi. 
 Parmi les améliorations, on peut retrouver la coloration syntaxique, l'édition multifenêtres, le support des plugins et la possibilité d'étendre les fonctionnalités grâce à un langage de script interne.
 
 ![contain](./img/vim-features-.png)
+
+<p style="font-size:15px">Bref, il a repris la philosophie et la base de <code>vi</code>, et il en a fait un editeur incroyablement plus agréable et performant.</p>
 
 <!-- Source : https://null-byte.wonderhowto.com/how-to/intro-vim-unix-text-editor-every-hacker-should-be-familiar-with-0174674/ -->
 ---
@@ -109,6 +124,9 @@ Parmi les améliorations, on peut retrouver la coloration syntaxique, l'édition
 Aujourd'hui, Vim continue d'évoluer grâce à une communauté active qui propose des mises à jour, des corrections de bugs et des fonctionnalités supplémentaires.
 
 Il reste un outil essentiel pour les développeurs et les utilisateurs expérimentés qui apprécient sa puissance et sa capacité à optimiser leur flux de travail.
+
+<p style="font-size:15px">L'intégralité des donations vers Vim sont redirigées vers l'ICCF Holand pour aider des enfants en Uganda</p>
+<p style="font-size:15px; müargin-top:0px; padding-top:0px">En effectuant une donation, vous pouvez voter pour les futures fonctionnalitées de Vim</p>
 
 ---
 <!-- _class: lead invert -->
@@ -127,9 +145,9 @@ Maintenant que le cours d'histoire est terminé, passons à la pratique.
 
 # 2. La base de vim
 
-N'oubliez pas que VIM s'apprend avant-tout par la pratique. Il est donc conseillé de suivre cette présentation en même temps que vous lisez les slides.
+N'oubliez pas que VIM s'apprend avant-tout par la **pratique**. Il est donc conseillé de suivre cette présentation en même temps que vous lisez les slides.
 
-Ne désespérez pas si vous oubliez certains raccourcis, Vim se maitrise par la pratique et l'habitude.
+Ne désespérez pas si vous oubliez certains raccourcis, vous développerez des automatismes au fûr et à mesure que vous l'utiliserez.
 
 ![center h:200](./img/vim-curve.jpeg)
 
@@ -140,11 +158,15 @@ Ne désespérez pas si vous oubliez certains raccourcis, Vim se maitrise par la 
 
 ## 2.1. Les modes
 
-Vim possède plusieurs modes, chacun ayant un rôle différent. Il est important de comprendre comment fonctionne les modes pour pouvoir utiliser Vim correctement.
+La première chose à savoir sur Vim, c'est qu'il existe plusieurs modes avec lequels vous allez régulièrement permuter.
+
+Vim possède plusieurs modes, chacun ayant un rôle différent. Il est important de comprendre comment fonctionnent les modes pour pouvoir utiliser Vim correctement.
 
 Nous utiliserons principalement 3 modes : le mode **normal**, le mode **insertion** et le mode **visuel**.
 
-Le mode normal est celui par défaut, il permet de lancer les 'macros'. Le mode **insertion** peut se lancer en pressant '**i**', et le mode **visuel** en pressant '**v**'.
+- Le mode **normal** est celui par défaut, il permet de lancer des 'macros' et des 'commandes'.
+- Le mode **insertion** peut se lancer en pressant '`i`' pour éditer un texte.
+- et le mode **visuel** en appuyant sur '`v`' pour modifier une sélection.
 
 ---
 <!-- _header: '2.1. Les modes' -->
@@ -236,7 +258,7 @@ En mode **normal**, en pressant `0` ou `^`, le curseur se positionne en début d
 
 ---
 
-Ces mêmes commandes peuvent servir de paramètre, comme pour l'action `d`.
+Ces mêmes commandes peuvent servir de paramètre, comme pour l'action `d`*(delete)*.
 
 Essayez alors de supprimer des mots via `dw`, `de` et `db`.
 
@@ -244,13 +266,35 @@ Idem, pour des lignes entières : `d$`, `d0`, ou `dd`
 
 ---
 
-Il est également possible d'utiliser les commandes (commençant par un `:`). Pour `d`, la syntaxe est `:[debut],[fin]d`. 
-Exemple:
-- `:5,10d` va supprimer entre les lignes 5 et 10
+Il est également possible d'utiliser les commandes *(commençant par `:`)*. Pour `d`, la syntaxe est `:[debut],[fin]d`. 
 
-En mode commande, vous avez aussi accès à ces caractères:
+Exemple:
+- `:5,10d` va tout supprimer entre les lignes 5 et 10
+
+à retenir qu'il existe certains caractères spéciaux:
 - . -> La ligne du curseur
 - ＄-> la dernière ligne
 - % -> toutes les lignes
 
+---
+<!-- _class: lead invert -->
+
+Si vous voulez annuler une action, utilisez `u`*(undo)* et `U` pour la refaire.
+
+---
+<!-- _header: '1. Exercice' -->
+
+Vous savez vous déplacer, supprimer des blocs et refaire une action.
+
+Comme exercice, ouvrez de nouveau `la-cigale-et-la-fourmi.txt`, placez vous à la 4ème ligne.
+
+Placez vous sur *__b__ise* avec une seule action puis supprimez le *la* en une seule action. (répétition autorisée, voir rappel)
+
+rappel: en plaçant un chiffre devant une action, celle-ci se répètera. *(ex: `5x`)*
+
+---
+
+# Correction
+
+---
 
