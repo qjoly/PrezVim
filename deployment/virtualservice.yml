@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: prezvim-vs
+spec:
+  gateways:
+  - prezvim
+  hosts:
+  - vim.avec.une-tasse-de.cafe
+  http:
+  - route:
+    - destination:
+        host: prezvim
+        port:
+          number: 80
