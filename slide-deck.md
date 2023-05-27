@@ -54,7 +54,7 @@ CyberPrez #03 - VIM
 
 ---
 
-# Sommaire
+# Sommaire :construction::construction::construction:
 - Qu'est-ce que Vim?
     - [Comment quitter vim?](#4)
     - [Histoire de vim](#7)
