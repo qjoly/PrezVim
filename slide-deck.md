@@ -249,6 +249,7 @@ Il est également possible de répéter une action en ajoutant un nombre avant l
 Mais avant d'apprendre à supprimer via `d`. Nous allons d'abord **apprendre à nous déplacer de manière efficace**.
 
 ---
+<!-- _header: '2.5. Se déplacer dans Vim' -->
 
 En mode **normal**, en pressant `0` ou `^`, le curseur se positionne en début de ligne. 
 
@@ -267,6 +268,8 @@ Essayez alors de supprimer des mots via `dw`, `de` et `db`.
 Idem, pour des lignes entières : `d$`, `d0`, ou `dd`
 
 ---
+<!-- _header: '2.6. Apprendre à supprimer' -->
+<br>
 
 l'instruction `d` est également disponible en tant que commandes *(commençant par `:`)*. Pour `d`, la syntaxe est `:[debut],[fin]d`. 
 
@@ -281,22 +284,89 @@ Exemple :
 ---
 <!-- _class: lead invert -->
 
-Si vous voulez annuler une action, utilisez `u`*(undo)* et `U` pour la refaire.
+Si vous voulez annuler une action, utilisez `u`*(undo)*.
 
 ---
 <!-- _header: '1. Exercice' -->
-<br><br><br><br>
+<br>
+
 Vous savez vous déplacer, supprimer des blocs et refaire une action.
 
-Comme exercice, ouvrez de nouveau `la-cigale-et-la-fourmi.txt`, placez vous à la 4ème ligne.
+Comme exercice, ouvrez de nouveau `la-cigale-et-la-fourmi.txt`,
 
-Placez-vous sur ***b**ise* avec une seule action puis supprimez le *la* en une seule action. (répétition autorisée, voir rappel)
+- Placez-vous à la 5ème ligne.
+- Placez-vous sur ***b**ise* avec une seule action
+- Supprimez le *la* en une seule action.
+- Supprimez *bise fut* en une seule action. *(répétitions autorisées)*
+- Placez-vous à la ligne 10 en une seule action.
+- Supprimez les 2 lignes **suivantes** en une seule action.
+- Supprimez les 5 lignes **précédentes** en une seule action.
 
-*Rappel: en plaçant un chiffre devant une action, celle-ci se répètera. *(ex: `5x`)**
+<p style="font-size:15px; font-style: italic;"> Rappel: Une répétition est un chiffre X à mettre devant une commande pour qu'elle se répète X fois. </p>
 
 ---
 
 # Correction
+
+<video style="center" src="videos/exercice-suppr.mp4" controls width="80%"></video>
+
+---
+<!-- _class: lead invert -->
+
+D'autres macros/actions en vrac : 
+- `r` → remplace le caractère sous le curseur
+- `a` → entre en mode insertion après le curseur
+- `:.,$-3d` → supprime toutes les lignes entre la ligne du curseur et les 3 dernières lignes du fichier.
+- `o` → entre en mode insertion en créant une nouvelle ligne.
+- `O` → entre en mode insertion en créant une nouvelle ligne au-dessus.
+
+---
+<!-- _class: lead invert -->
+
+# Passer en visuel
+
+---
+<!-- _header: '3.1. Le mode visuel' -->
+
+Le mode **visuel** est le seul que nous n'avons pas encore abordé. Il permet de sélectionner du texte et y appliquer une macro.
+
+En mode **normal**, appuyez sur `v` pour entrer en mode **visuel**. Vous pouvez alors vous déplacer avec les touches directionnelles pour sélectionner du texte.
+
+![center h:400](./img/visuel-demo.gif)
+
+---
+
+Une fois le texte sélectionné, vous pouvez appliquer une macro comme `d` pour couper le texte sélectionné.
+
+:eyes: Car oui, je vous ai menti ! `d` ne permet pas de **supprimer** mais de **couper**. La différence est que le texte coupé est stocké dans un presse-papier *(clipboard)*.
+
+![center](https://media.giphy.com/media/l2JdYcGeUHckmDYZy/giphy.gif)
+
+<p style="font-size:15px; font-style: italic;"> C'est l'équivalent total d'un <code>ctrl+x</code>. </p>
+
+---
+<!-- _class: lead invert -->
+
+En supprimant du texte, il est possible de le coller avec `p` *(paste)* ou `P` pour le coller avant le curseur.
+
+![center h:500](./img/cut-paste.gif)
+
+---
+
+Comme vu dans la précédente animation, il est possible de continuer à utiliser les raccourcis de déplacement en mode **visuel**.
+
+*Vous pouvez aussi directement sélectionner la ligne entière avec `V`*.
+
+Pour copier une sélection, utilisez `y` *(yank)*.
+
+<video style="center" src="videos/copy-paste.mp4" controls width="70%"></video>
+
+---
+<!-- _class: lead invert -->
+
+Le *clipboard* de Vim est utilisable entre différents fichiers. C'est-à-dire que vous pouvez copier du texte dans un fichier, puis le coller dans un autre fichier.
+
+<video style="center" src="videos/copy-entre-fichiers.mp4" controls width="80%"></video>
 
 ---
 
