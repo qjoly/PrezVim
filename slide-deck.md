@@ -5,8 +5,12 @@ markdown.marp.enableHtml: true
 paginate: true
 class: invert
 header: 'Découvrir Vim'
-footer: "[Site de l'auteur](https://thebidouilleur.xyz)"
+footer: "[Auteur](https://thebidouilleur.xyz)"
 titre: 'CyberPrez #03 - VIM'
+description: Vim avec une tasse de café
+author: Quentin JOLY
+keywords: vim,thebidouilleur,tasse-de-cafe
+url: https://thebidouilleur.xyz/
 ---
 
 <style>
@@ -319,6 +323,8 @@ D'autres macros/actions en vrac :
 - `:.,$-3d` → supprime toutes les lignes entre la ligne du curseur et les 3 dernières lignes du fichier.
 - `o` → entre en mode insertion en créant une nouvelle ligne.
 - `O` → entre en mode insertion en créant une nouvelle ligne au-dessus.
+- `dG` → supprime toutes les lignes du curseur à la fin du fichier.
+- `dgg` → supprime toutes les lignes du curseur au début du fichier.
 
 ---
 <!-- _class: lead invert -->
@@ -369,4 +375,48 @@ Le *clipboard* de Vim est utilisable entre différents fichiers. C'est-à-dire q
 <video style="center" src="videos/copy-entre-fichiers.mp4" controls width="80%"></video>
 
 ---
+<!-- _class: invert -->
 
+# Support de sed
+
+<br>
+
+Sed est un outil en ligne de commande permettant de modifier du texte. Il est très utilisé dans les scripts de déploiement pour modifier des fichiers de configuration. Celui-ci est intégré nativement à vim avec la commande `s`.
+
+En bash : `sed -i 's/old/new/g' file.txt`
+Sur Vim : `:debut,fins/old/new/g`
+
+Comme pour `:d`, `:s` est une commande qui prend en paramètre un début et une fin. Le début et la fin peuvent être des lignes ou des caractères spéciaux comme `.` ou `%`.
+
+---
+<!-- _class: lead invert -->
+
+Simple remplacement de texte : *Cigale* par *Bestiole* avec `:1,2s/Cigale/Bestiole/`.
+
+<video style="center" src="videos/sed-exemple.mp4" controls width="90%"></video>
+
+---
+<!-- _class: lead invert -->
+
+Simple remplacement de texte : *Cigale* par *Bestiole* avec `:1,2s/Cigale/Bestiole/`.
+
+<video style="center" src="videos/sed-exemple.mp4" controls width="90%"></video>
+
+---
+<!-- _class: lead invert -->
+
+### Visuel + sed = :heart:
+- `v` → entre en mode visuel.
+- selection des lignes via les flèches.
+- `<, '>s/^/# /` → ajoute un `#` au début de chaque ligne sélectionnée.
+
+<video style="center" src="videos/comment-sed.mp4" controls width="60%" autoplay></video>
+
+---
+
+# Onglets et multi-fenêtres
+
+---
+<!-- _class: lead invert -->
+
+# <!--fit-->  todo :construction:
