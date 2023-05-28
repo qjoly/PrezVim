@@ -26,21 +26,15 @@ img[alt~="center"] {
   display: block;
   margin: 0 auto;
 }
-blockquote {
-  background: #ffedcc;
-  border-left: 10px solid #d1bf9d;
-  margin: 1.5em 10px;
-  padding: 0.5em 10px;
-}
-blockquote:before{
-  content: unset;
-}
-blockquote:after{
-  content: unset;
-}
+
 video::-webkit-media-controls {
     will-change: transform;
 }
+
+section.sommaire li {
+    font-size: 20px;
+}
+
 </style>
 
 <!-- _class: lead invert -->
@@ -55,11 +49,27 @@ CyberPrez #03 - VIM
 ![width:250](./img/vimlogo.png)
 
 ---
+<!-- _class: lead invert sommaire -->
 
-# Sommaire :construction::construction::construction:
+# Sommaire
+
 - Qu'est-ce que Vim?
     - [Comment quitter vim?](#4)
     - [Histoire de vim](#7)
+- La base de Vim
+  - [Astuce pour apprendre](#15)
+  - [Les modes](#16)
+  - [Se déplacer dans un fichier](#19)
+  - [Se déplacer de manière **optimale**](#27)
+  - [Supprimer des blocs de texte](#28)
+  - [Exercice](#30)
+- Éditions de texte avancées
+  - [Le mode visuel](#34)
+  - [Couper, copier, coller](#36)
+  - [Rechercher un pattern](#39)
+  - [Vim + sed = :heart:](#41)
+  - [Utiliser des onglets](#46)
+  
 ---
 <!-- transition: fade -->
 <!-- _class: lead invert -->
@@ -77,7 +87,7 @@ Si vous avez trouvé cette présentation parce que **vous êtes bloqué dans vim
 
 ![contain center](./img/key-echap---_q_.png)
 
-*Si vous voulez sauvegarder avant de quitter le document, pressez la touche `echap`, puis `:wq`*
+*Si vous voulez sauvegarder avant de quitter le document, pressez la touche `echap`, puis `:wq`*.
 
 ---
 <!-- _class: lead invert -->
@@ -95,17 +105,17 @@ Si vous avez trouvé cette présentation parce que **vous êtes bloqué dans vim
 # 1. Histoire de vim
 
 ---
-<!-- _header: '1. Histoire de Vim' -->
+<!-- _header: 'Histoire de Vim' -->
 <!-- _class: lead invert -->
 
 
-Vim, qui signifie **"Vi Improved"** *(Vi amélioré)*, est l'editeur de texte le plus utilisé en ligne de commande. Son histoire remonte aux années 1970 avec l'apparition d'un éditeur de texte appelé Vi *(Visual Editor)* développé par *Bill Joy* pour le système d'exploitation Unix.
+Vim, qui signifie **"Vi Improved"** *(Vi amélioré)*, est l'éditeur de texte le plus utilisé en ligne de commande. Son histoire remonte aux années 1970 avec l'apparition d'un éditeur de texte appelé Vi *(Visual Editor)* développé par *Bill Joy* pour le système d'exploitation Unix.
 
 Vi est devenu populaire parmi les programmeurs et les administrateurs système grâce à sa puissance et à sa simplicité d'utilisation en mode texte. Au fil des années, de nombreux utilisateurs ont contribué au développement de Vi en créant des versions personnalisées, chacune avec ses améliorations et fonctionnalités spécifiques.
 
 ---
 <!-- _class: lead invert -->
-<!-- _header: '1. Histoire de Vim' -->
+<!-- _header: 'Histoire de Vim' -->
 
 En *1991*, *Bram Moolenaar* a créé Vim en se basant sur le code source de Vi. Vim était destiné à être une version améliorée de Vi, incorporant de nouvelles fonctionnalités et offrant une plus grande flexibilité.
 
@@ -114,7 +124,7 @@ En *1991*, *Bram Moolenaar* a créé Vim en se basant sur le code source de Vi. 
 
 ---
 <!-- _class: lead invert -->
-<!-- _header: '1. Histoire de Vim' -->
+<!-- _header: 'Histoire de Vim' -->
 
 Parmi les améliorations, on peut retrouver la coloration syntaxique, l'édition multifenêtres, le support des plugins et la possibilité d'étendre les fonctionnalités grâce à un langage de script interne.
 
@@ -126,7 +136,7 @@ Parmi les améliorations, on peut retrouver la coloration syntaxique, l'édition
 ---
 
 <!-- _class: lead invert -->
-<!-- _header: '1. Histoire de Vim' -->
+<!-- _header: 'Histoire de Vim' -->
 
 Aujourd'hui, Vim continue d'évoluer grâce à une communauté active qui propose des mises à jour, des corrections de bugs et des fonctionnalités supplémentaires.
 
@@ -145,12 +155,12 @@ Maintenant que le cours d'histoire est terminé, passons à la pratique.
 <!-- _class: lead invert -->
 <!-- transition: fade -->
 
-# 2. La base de vim
+# La base de Vim
 
 ---
-<!-- _header: '2. La base de vim' -->
+<!-- _header: 'La base de vim' -->
 
-# 2. La base de vim
+# La base de Vim
 
 N'oubliez pas que VIM s'apprend avant-tout par la **pratique**. Il est donc conseillé de suivre cette présentation en même temps que vous lisez les slides.
 
@@ -161,9 +171,21 @@ N'oubliez pas que VIM s'apprend avant-tout par la **pratique**. Il est donc cons
 <!-- Source : https://www.freecodecamp.org/news/learn-linux-vim-basic-features-19134461ab85/ -->
 
 ---
-<!-- _header: '2.1. Les modes' -->
+<!-- _header: '' -->
+<br><br>
+# Petit conseil amical avant de commencer
 
-## 2.1. Les modes
+```bash
+alias nano="vim"
+```
+
+Je vous assure que vous ne le regretterez pas.
+
+<p style="font-size:15px; font-style: italic;"> Et rendez cet alias persistant dans votre <code>.bashrc</code> </p>
+
+
+---
+## Les modes
 
 La première chose à savoir sur Vim, c'est qu'il existe plusieurs modes avec lesquels vous allez régulièrement permuter.
 
@@ -176,7 +198,7 @@ Nous utiliserons principalement 3 modes : le mode **normal**, le mode **insertio
 - Le mode **visuel** s'active en appuyant sur '`v`', il permet de modifier une sélection.
 
 ---
-<!-- _header: '2.1. Les modes' -->
+<!-- _header: 'Les modes' -->
 <!-- _footer: '' -->
 
 
@@ -192,14 +214,15 @@ Vous pouvez **toujours** revenir au mode `normal` en pressant la touche `echap`.
 
 Téléchargez maintenant le fichier exemple `cigale-et-la-fourmi.txt` [ici](./exercices/cigale-et-la-fourmi.txt).
 
-Pour l'ouvrir avec vim, tapez `vim cigale-et-la-fourmi.txt` dans votre terminal ou tapez `vim` puis écrivez `:open cigale-et-la-fourmi.txt`.
+Pour l'ouvrir avec Vim, tapez `vim cigale-et-la-fourmi.txt` dans votre terminal ou tapez `vim` puis écrivez `:edit cigale-et-la-fourmi.txt`.
 
 ![center h:350](./img/fenetre-vim.png)
 
 ---
-<!-- _header: '2.2. Les déplacements' -->
+<!-- _header: 'Les déplacements' -->
 
 ## Apprenons à se déplacer dans un fichier
+
 À l'origine, les touches directionnelles n'existaient pas. Pour se déplacer dans le texte, il fallait utiliser les touches `h`, `j`, `k` et `l` pour se déplacer respectivement à gauche, en bas, en haut et à droite.
 
 ![center h:250 opacity:.5](./img/./hjkl.png)
@@ -207,18 +230,18 @@ Pour l'ouvrir avec vim, tapez `vim cigale-et-la-fourmi.txt` dans votre terminal 
 Vim a gardé cette logique, mais il est *(heureusement)* possible d'utiliser les touches directionnelles pour se déplacer.
 
 --- 
-<!-- _header: '2.3. Mise en pratique - Insertion' -->
+<!-- _header: 'Mise en pratique - Insertion' -->
 
 Dans le fichier `cigale-et-la-fourmi.txt`, placez votre curseur sur la première ligne du texte, entrez en mode **insertion** en pressant `i` et écrivez `La Cigale et la Fourmi` puis appuyez sur `echap` pour revenir en mode **normal**. L'objectif est d'ajouter le titre en début de fichier.
 
-<video style="center" src="videos/mode-i.mp4" controls width="80%"></video>
+<video style="center" src="videos/mode-i.mp4" controls width="80%" ></video>
 
 ---
-<!-- _header: '2.3. Mise en pratique - Insertion' -->
+<!-- _header: 'Mise en pratique - Insertion' -->
 
 Simple ? Une fois de retour en mode **normal**, enregistrez le fichier en pressant `:w` puis `entrée`.
 
-<video style="center" src="videos/save.mp4" controls width="60%"></video>
+<video style="center" src="videos/save.mp4" controls width="70%" ></video>
 
 Pour quitter vim, `:q` puis `entrée`.
 
@@ -232,7 +255,7 @@ Bien que le mode **insertion** permette d'ajouter/supprimer du texte. Nous n'all
 ![center h:450](img/overkill.png)
 
 ---
-<!-- _header: '2.4. Rester en mode normal' -->
+<!-- _header: 'Rester en mode normal' -->
 <!-- _class: lead invert -->
 
 Nous allons alors apprendre quelques raccourcis du mode normal pour nous éviter de constamment changer de mode.
@@ -247,7 +270,7 @@ Les deux principales manières de supprimer du texte sont `x` et `d` :
 ---
 Il est également possible de répéter une action en ajoutant un nombre avant la commande. Par exemple, `5x` supprimera les 5 caractères suivants le curseur.
 
-<video style="center" src="videos/x.mp4" controls width="80%"></video>
+<video style="center" src="videos/x.mp4" controls width="80%" ></video>
 
 ---
 <!-- _class: lead invert -->
@@ -255,16 +278,16 @@ Il est également possible de répéter une action en ajoutant un nombre avant l
 Mais avant d'apprendre à supprimer via `d`. Nous allons d'abord **apprendre à nous déplacer de manière efficace**.
 
 ---
-<!-- _header: '2.5. Se déplacer dans Vim' -->
+<!-- _header: 'Se déplacer dans Vim' -->
 
 En mode **normal**, en pressant `0` ou `^`, le curseur se positionne en début de ligne. 
 
-- `gg`, au début du fichier
-- `G`, à la fin du fichier
-- `w`, au début du prochain mot
-- `e`, à la fin du mot actuel/suivant
-- `b`, au début du mot précédent/actuel 
-- `:10` ou `10G`, à la ligne 10
+- `gg`, au début du fichier.
+- `G`, à la fin du fichier.
+- `w`, au début du prochain mot.
+- `e`, à la fin du mot actuel/suivant.
+- `b`, au début du mot précédent/actuel .
+- `:10` ou `10G`, à la ligne 10.
 
 
 Ces mêmes commandes peuvent servir de paramètre, comme pour l'action `d`*(delete)*.
@@ -274,18 +297,19 @@ Essayez alors de supprimer des mots via `dw`, `de` et `db`.
 Idem, pour des lignes entières : `d$`, `d0`, ou `dd`
 
 ---
-<!-- _header: '2.6. Apprendre à supprimer' -->
+<!-- _header: 'Apprendre à supprimer' -->
 <br>
 
 l'instruction `d` est également disponible en tant que commandes *(commençant par `:`)*. Pour `d`, la syntaxe est `:[debut],[fin]d`. 
 
 Exemple :
-- `:5,10d` va tout supprimer entre les lignes 5 et 10
+- `:5,10d` va tout supprimer entre les lignes 5 et 10.
 
 à retenir qu'il existe certains caractères spéciaux pour définir le début et la fin :
-- `.`  → La ligne du curseur
-- `＄` → la dernière ligne
-- `%`  → toutes les lignes
+
+- `.`  → La ligne du curseur.
+- `＄` → la dernière ligne.
+- `%`  → toutes les lignes.
 
 ---
 <!-- _class: lead invert -->
@@ -293,7 +317,7 @@ Exemple :
 Si vous voulez annuler une action, utilisez `u`*(undo)*.
 
 ---
-<!-- _header: '1. Exercice' -->
+<!-- _header: 'Exercice' -->
 <br>
 
 Vous savez vous déplacer, supprimer des blocs et refaire une action.
@@ -334,7 +358,7 @@ D'autres macros/actions en vrac :
 # Passer en visuel
 
 ---
-<!-- _header: '3.1. Le mode visuel' -->
+<!-- _header: 'Le mode visuel' -->
 
 Le mode **visuel** est le seul que nous n'avons pas encore abordé. Il permet de sélectionner du texte et y appliquer une macro.
 
@@ -379,14 +403,37 @@ Le *clipboard* de Vim est utilisable entre différents fichiers. C'est-à-dire q
 ---
 <!-- _class: invert -->
 
-# Support de sed
+# Faire une recherche dans un fichier
+
+Vim intègre une manière simple de faire des recherches : `/` et `?` dont la seule différence est la direction de la recherche. (vers le bas ou vers le haut)
+
+Ces actions prennent en paramètre une **regex** *(expression régulière)*.
+
+À retenir :
+
+- `/` → recherche vers le bas
+- `?` → recherche vers le haut
+- `n` → recherche le prochain résultat
+- `N` → recherche le résultat précédent
+
+<p style="font-size:15px; font-style: italic;">Vous pouvez surligner les résultats avec la commande <code>:set hlsearch</code></p>
+
+---
+
+# Faire une recherche dans un fichier
+
+<video style="center" src="videos/recherche.mp4" controls width="80%"></video>
+
+---
+
+# Vim + sed = :heart:
 
 <br>
 
 Sed est un outil en ligne de commande permettant de modifier du texte. Il est très utilisé dans les scripts de déploiement pour modifier des fichiers de configuration. Celui-ci est intégré nativement à vim avec la commande `s`.
 
 En bash : `sed -i 's/old/new/g' file.txt`
-Sur Vim : `:debut,fins/old/new/g`
+Sur Vim : `:[debut],[fin]s/old/new/g`
 
 Comme pour `:d`, `:s` est une commande qui prend en paramètre un début et une fin. Le début et la fin peuvent être des lignes ou des caractères spéciaux comme `.` ou `%`.
 
@@ -407,18 +454,51 @@ Simple remplacement de texte : *Cigale* par *Bestiole* avec `:1,2s/Cigale/Bestio
 ---
 <!-- _class: lead invert -->
 
-### Visuel + sed = :heart:
-- `v` → entre en mode visuel.
-- selection des lignes via les flèches.
-- `<, '>s/^/# /` → ajoute un `#` au début de chaque ligne sélectionnée.
+### Vim + sed = :heart:
 
-<video style="center" src="videos/comment-sed.mp4" controls width="60%" autoplay></video>
+- `v` → entre en mode visuel.
+- Sélection des lignes via les flèches.
+- `'<, '>s/^/#/` → ajoute un `#` au début de chaque ligne sélectionnée.
+
+<video style="center" src="videos/comment-sed.mp4" controls width="60%" ></video>
+
+
+<p style="font-size:15px; font-style: italic;"> Vim va préremplir les balises du mode visuel <code>'<, '></code>. </p>
 
 ---
 
-# Onglets et multi-fenêtres
+D'autres raccourcis pour le mode visuel:
+- (**mode normal**) `gv` → réapplique la dernière sélection visuelle.
+- (**mode visuel**) `o` → se place au début/fin de la sélection.
+- (**mode visuel**) `u`  et `U` → Lowercase/uppercase.
+- (**mode visuel**) `~` → Inverse la case.
+- (**mode visuel**) `>`  et `<` → Ajouter/supprime l'indentation.
+---
+
+# Onglets Vim
+
+Ce n'est pas très connu mais Vim permet de gérer des onglets afin de travailler sur plusieurs fichiers en même temps. La syntaxe pour ouvrir directement de multiples fichiers en une seule commande est la suivante : `vim -p file1 file2 file3`.
+
+Voici les principales choses à retenir:
+
+- `:tabe` → ouvre un nouveau fichier dans un nouvel onglet.
+- `gt` → passe à l'onglet suivant.
+- `gT` → passe à l'onglet précédent.
+- `{i}gt` → passe à l'onglet {i}.
+- `:qa` → ferme tous les onglets.
+
+---
+
+# Démonstration
+
+<video style="center" src="videos/tab-showcase.mp4" controls width="80%" ></video>
+
+---
+<!-- _class: lead invert -->
+# Multi-fenêtrage
+# <!--fit-->  à suivre :construction:
 
 ---
 <!-- _class: lead invert -->
 
-# <!--fit-->  todo :construction:
+*n'hésitez pas à me contacter pour toute question, remarque ou suggestion !*
