@@ -40,6 +40,8 @@ section.sommaire li {
 <!-- _class: lead invert -->
 <!-- transition: cover -->
 
+<title> Vim avec une tasse de café </title>
+<script defer data-domain="vim.avec.une-tasse-de.cafe" src="https://stats.192168128.xyz/js/plausible.js"></script>
 
 CyberPrez #03 - VIM
 # Découvrir Vim 
