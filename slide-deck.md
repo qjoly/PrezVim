@@ -4,6 +4,13 @@ theme: gaia
 markdown.marp.enableHtml: true
 paginate: true
 class: invert
+header: 'Découvrir Vim'
+footer: "[Auteur](https://thebidouilleur.xyz)"
+titre: 'CyberPrez #03 - VIM'
+description: Vim avec une tasse de café
+author: Quentin JOLY
+keywords: vim,thebidouilleur,tasse-de-cafe
+url: https://thebidouilleur.xyz/
 ---
 
 <style>
@@ -33,8 +40,6 @@ section.sommaire li {
 <!-- _class: lead invert -->
 <!-- transition: cover -->
 
-<title> Vim avec une tasse de café </title>
-<script defer data-domain="vim.avec.une-tasse-de.cafe" src="https://stats.192168128.xyz/js/plausible.js"></script>
 
 CyberPrez #03 - VIM
 # Découvrir Vim 
