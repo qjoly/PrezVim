@@ -102,7 +102,7 @@ Si vous avez trouvé cette présentation parce que **vous êtes bloqué dans vim
 ---
 <!-- _class: lead invert -->
 
-# 1. Histoire de vim
+# Histoire de vim
 
 ---
 <!-- _header: 'Histoire de Vim' -->
@@ -143,7 +143,7 @@ Aujourd'hui, Vim continue d'évoluer grâce à une communauté active qui propos
 Il reste un outil essentiel pour les développeurs et les utilisateurs expérimentés qui apprécient sa puissance et sa capacité à optimiser leur flux de travail.
 
 <p style="font-size:15px">L'intégralité des donations vers Vim sont redirigées vers l'ICCF Holand pour aider des enfants en Ouganda.</p>
-<p style="font-size:15px; müargin-top:0px; padding-top:0px">Vous pouvez voter pour les futures fonctionnalitées de Vim après une donation.</p>
+<p style="font-size:15px; margin-top:0px; padding-top:0px">Vous pouvez voter pour les futures fonctionnalitées de Vim après une donation.</p>
 
 ---
 <!-- _class: lead invert -->
@@ -436,13 +436,6 @@ En bash : `sed -i 's/old/new/g' file.txt`
 Sur Vim : `:[debut],[fin]s/old/new/g`
 
 Comme pour `:d`, `:s` est une commande qui prend en paramètre un début et une fin. Le début et la fin peuvent être des lignes ou des caractères spéciaux comme `.` ou `%`.
-
----
-<!-- _class: lead invert -->
-
-Simple remplacement de texte : *Cigale* par *Bestiole* avec `:1,2s/Cigale/Bestiole/`.
-
-<video style="center" src="videos/sed-exemple.mp4" controls width="90%"></video>
 
 ---
 <!-- _class: lead invert -->
