@@ -527,6 +527,17 @@ Pour enregistrer une clé dans le registre: `"ayy` *(`yy` pour copier la ligne)*
 Evidemment : `p` et `yy` ne sont pas les seules manières de coller/copier le contenu d'une clé. Les commandes valables dans les précédants cas d'usages sont toujours valides et utilisables dans ce contexte.
 
 ---
+<!-- _class: lead invert -->
+
+# Gestion des Buffers
+
+---
+
+Un buffer est le fait de charger un fichier en mémoire. En simple: un fichier ouvert dans Vim est un buffer (qu'il soit affiché à l'écran.. ou non).
+
+Il est possible d'ouvrir plusieurs fichiers en même temps en tapant la commande `:edit nouveau_fichier` pour ouvrir un nouveau Buffer et de voir vos buffers ouverts via la commande `:ls`.
+
+---
 
 <!-- _class: lead invert -->
 # <!--fit-->  à suivre :construction:
