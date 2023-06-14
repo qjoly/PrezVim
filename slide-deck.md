@@ -488,10 +488,54 @@ Voici les principales choses à retenir:
 
 ---
 <!-- _class: lead invert -->
-# Multi-fenêtrage
-# <!--fit-->  à suivre :construction:
+# Registres
 
 ---
+
+Lorsque nous manipulons un fichier assez conséquent, nous allons régulièrement faire des `d`(couper) et des `p`(coller).
+
+Certains `d` n'auront pour objectif que de supprimer un bloc de texte, sans volonté de l'enregistrer dans notre presse papier.
+
+Ou en coupant plusieurs blocs séparés, vous voudriez peut-être coller le 1er bloc. (Alors que la commence `p` ne colle que le dernier bloc)
+
+À ce problème, nous avons la solution d'utiliser les **registres**.
+
+---
+
+Lorsque vous supprimez un bloc, Vim va l'ajouter à son registre. Celui-ci peut contenir jusqu'à **9** blocs.
+
+D'autres éléments sont également déjà présent dans le registre en *readonly*:
+
+- `"%` correspond au nom du fichier en cours d'édition 
+- `":` est la dernière commande exécutée
+- `".` affiche la dernière chaine de texte ajoutée
+- `"/` correspond à la dernière recherche (sed inclus)
+- `"*` correspond au clipboard clic-molette
+- `"+` correspond au clipboard système
+- `"#` au dernier fichier ouvert (sur la même session)
+
+Vous pouvez voir ce que contient votre registre via la commande `:reg`.
+
+---
+
+Maintenant, vous pouvez également ajouter un élément au registre qui ne sera pas supprimé. Les clés 0-9 et `%:/*+#` sont en lecture-seule, il vous reste néanmoins toutes les clés alphabétiques.
+
+Chaque commande concernant le registre commence par `"` *(doubles-quotes)*. Pour coller la clé 9, la commande est : `"ap` *(`p` pour coller)*
+
+Pour enregistrer une clé dans le registre: `"ayy` *(`yy` pour copier la ligne)*
+
+Evidemment : `p` et `yy` ne sont pas les seules manières de coller/copier le contenu d'une clé. Les commandes valables dans les précédants cas d'usages sont toujours valides et utilisables dans ce contexte.
+
+---
+
+<!-- _class: lead invert -->
+# <!--fit-->  à suivre :construction:
 <!-- _class: lead invert -->
 
 *n'hésitez pas à me contacter pour toute question, remarque ou suggestion !*
+
+
+
+
+
+
