@@ -77,7 +77,7 @@ CyberPrez #03 - VIM
   - [Gestion des buffers](#46)
   - [Utiliser des onglets](#50)
   - [Multi-fenêtrage](#52)
-  - [Registres](#52)
+  - [Registres](#54)
   
 ---
 <!-- transition: fade -->
