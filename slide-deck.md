@@ -447,7 +447,7 @@ Simple remplacement de texte : *Cigale* par *Bestiole* avec `:1,2s/Cigale/Bestio
 ---
 <!-- _class: lead invert -->
 
-### Vim + sed = :heart:
+### Commenter plusieurs lignes via sed
 
 - `v` → entre en mode visuel.
 - Sélection des lignes via les flèches.
@@ -459,18 +459,49 @@ Simple remplacement de texte : *Cigale* par *Bestiole* avec `:1,2s/Cigale/Bestio
 <p style="font-size:15px; font-style: italic;"> Vim va préremplir les balises du mode visuel <code>'<, '></code>. </p>
 
 ---
+<!-- _class: lead invert -->
 
-D'autres raccourcis pour le mode visuel:
+D'autres raccourcis en mode visuel:
 - (**mode normal**) `gv` → réapplique la dernière sélection visuelle.
 - (**mode visuel**) `o` → se place au début/fin de la sélection.
 - (**mode visuel**) `u`  et `U` → Lowercase/uppercase.
 - (**mode visuel**) `~` → Inverse la case.
 - (**mode visuel**) `>`  et `<` → Ajouter/supprime l'indentation.
+
+---
+<!-- _class: lead invert -->
+
+# Gestion des Buffers
+
+---
+# Qu'est ce qu'un Buffer ?
+
+Un **buffer** est un fichier chargé en mémoire. Un fichier ouvert dans Vim est alors un buffer *(qu'il soit affiché à l'écran… ou non)*.
+
+Lorsque nous ouvrons un fichier, celui-ci est chargé dans un buffer. Si nous ouvrons un autre fichier, celui-ci sera chargé dans un second buffer. Nous pouvons alors naviguer entre les fichiers ouverts assez facilement.
+
+Voici quelques commandes utiles pour gérer les buffers :
+- `:ls` → liste les buffers ouverts.
+- `:b{i}` → ouvre le buffer {i}.
+- `:bnext` ou `:bn`→ ouvre le buffer suivant.
+- `:bprevious` ou `:bp` → ouvre le buffer précédent.
+- `:bdelete` ou `:bd` → ferme le buffer courant.
+---
+
+## Naviguer entre les buffers
+
+<video style="center" src="videos/buffers.mp4" controls width="80%" ></video>
+
+---
+<!-- _class: lead invert -->
+
+Maintenant que nous savons *manipuler les buffers*, nous pouvons les utiliser pour rentre leurs usages plus efficaces avec **les onglets** ou le **multifenêtrage**.
+
 ---
 
 # Onglets Vim
 
-Ce n'est pas très connu mais Vim permet de gérer des onglets afin de travailler sur plusieurs fichiers en même temps. La syntaxe pour ouvrir directement de multiples fichiers en une seule commande est la suivante : `vim -p file1 file2 file3`.
+Ce n'est pas très utilisé mais Vim permet de gérer des onglets afin de travailler sur plusieurs fichiers en même temps. La syntaxe pour ouvrir directement de multiples fichiers en une seule commande est la suivante : `vim -p file1 file2 file3`.
 
 Voici les principales choses à retenir:
 
@@ -487,24 +518,49 @@ Voici les principales choses à retenir:
 <video style="center" src="videos/tab-showcase.mp4" controls width="80%" ></video>
 
 ---
+
+# Multifenêtrage
+
+Maintenant, on s'attaque à l'affichage de plusieurs buffers en même temps avec le multifenêtrage.
+
+- `:split fichier` ou `:sp` - Ajouter une fenetre horizontale en ouvrant 'fichier'
+- `:vsplit fichier` ou `:vsp` - Ajouter une fenetre verticale en ouvrant 'fichier'
+- `ctrl-w fleche-haut` - se déplacer vers le haut
+- `ctrl-w ctrl-w` - se déplacer vers la fenêtre suivante
+- `:resize 10` - redimensionner la fenêtre courante à 10 lignes
+- `:vertical resize 10` - redimensionner la fenêtre courante à 10 colonnes
+- `:sview` - ouvrir en lecture seule
+- `:hide` - fermer la fenêtre courante
+- `:only` - fermer toutes les fenêtres sauf la fenêtre courante
+---
+
+# Démonstration multifenêtrage
+
+<video style="center" src="videos/multifenetres.mp4" controls width="80%" ></video>
+
+
+---
 <!-- _class: lead invert -->
 # Registres
 
 ---
+<!-- _class: lead invert -->
 
-Lorsque nous manipulons un fichier assez conséquent, nous allons régulièrement faire des `d`(couper) et des `p`(coller).
+Lorsque nous manipulons un fichier volumineux, nous allons régulièrement faire des `d`*(couper)* et des `p`*(coller)*.
 
-Certains `d` n'auront pour objectif que de supprimer un bloc de texte, sans volonté de l'enregistrer dans notre presse papier.
-
-Ou en coupant plusieurs blocs séparés, vous voudriez peut-être coller le 1er bloc. (Alors que la commence `p` ne colle que le dernier bloc)
+<p>
+Certaines suppressions avec <code>d</code> n'auront pour objectif que de supprimer un bloc de texte, sans volonté de l'enregistrer dans notre presse-papier.<br>
+Pourtant Vim va l'enregistrer dans le presse papier et nous allons perdre le contenu qui aurait dû être collé par <code>p</code> (ou <code>P</code>) avant la suppression.
+</p>
 
 À ce problème, nous avons la solution d'utiliser les **registres**.
 
 ---
+# Les registres
 
-Lorsque vous supprimez un bloc, Vim va l'ajouter à son registre. Celui-ci peut contenir jusqu'à **9** blocs.
+Lorsque vous supprimez un bloc, Vim va l'ajouter à un registre qui peut retenir jusqu'à **9** blocs automatiquement.
 
-D'autres éléments sont également déjà présent dans le registre en *readonly*:
+D'autres éléments sont également déjà présents dans le registre en *readonly*:
 
 - `"%` correspond au nom du fichier en cours d'édition 
 - `":` est la dernière commande exécutée
@@ -514,28 +570,18 @@ D'autres éléments sont également déjà présent dans le registre en *readonl
 - `"+` correspond au clipboard système
 - `"#` au dernier fichier ouvert (sur la même session)
 
-Vous pouvez voir ce que contient votre registre via la commande `:reg`.
+<p style="font-size:17px"> Vous pouvez voir le contenu de votre registre via la commande <code>:reg</code></p>
 
 ---
+## Sauvegarder un élément dans le registre
 
-Maintenant, vous pouvez également ajouter un élément au registre qui ne sera pas supprimé. Les clés 0-9 et `%:/*+#` sont en lecture-seule, il vous reste néanmoins toutes les clés alphabétiques.
+À présent, vous pouvez également ajouter un élément au registre qui ne sera pas supprimé. Si les clés 0-9 et `%:/*+#` sont en lecture-seule, il vous reste néanmoins toutes les clés alphabétiques.
 
 Chaque commande concernant le registre commence par `"` *(doubles-quotes)*. Pour coller la clé 9, la commande est : `"ap` *(`p` pour coller)*
 
 Pour enregistrer une clé dans le registre: `"ayy` *(`yy` pour copier la ligne)*
 
-Evidemment : `p` et `yy` ne sont pas les seules manières de coller/copier le contenu d'une clé. Les commandes valables dans les précédants cas d'usages sont toujours valides et utilisables dans ce contexte.
-
----
-<!-- _class: lead invert -->
-
-# Gestion des Buffers
-
----
-
-Un buffer est le fait de charger un fichier en mémoire. En simple: un fichier ouvert dans Vim est un buffer (qu'il soit affiché à l'écran.. ou non).
-
-Il est possible d'ouvrir plusieurs fichiers en même temps en tapant la commande `:edit nouveau_fichier` pour ouvrir un nouveau Buffer et de voir vos buffers ouverts via la commande `:ls`.
+Évidemment : `p` et `yy` ne sont pas les seules manières de coller/copier le contenu d'une clé. Les commandes valables dans les précédents cas d'usages sont toujours valides et utilisables dans ce contexte.
 
 ---
 
@@ -544,9 +590,5 @@ Il est possible d'ouvrir plusieurs fichiers en même temps en tapant la commande
 <!-- _class: lead invert -->
 
 *n'hésitez pas à me contacter pour toute question, remarque ou suggestion !*
-
-
-
-
 
 
