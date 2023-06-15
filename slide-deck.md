@@ -52,7 +52,7 @@ CyberPrez #03 - VIM
 <!-- _class: lead invert sommaire -->
 
 # Sommaire
-
+*(1/2)*
 - Qu'est-ce que Vim?
     - [Comment quitter vim?](#4)
     - [Histoire de vim](#7)
@@ -67,8 +67,17 @@ CyberPrez #03 - VIM
   - [Le mode visuel](#34)
   - [Couper, copier, coller](#36)
   - [Rechercher un pattern](#39)
-  - [Vim + sed = :heart:](#41)
-  - [Utiliser des onglets](#46)
+---
+<!-- _class: lead invert sommaire -->
+
+# Sommaire
+*(2/2)*
+
+  - [Vim + sed = :heart:](#42)
+  - [Gestion des buffers](#46)
+  - [Utiliser des onglets](#50)
+  - [Multi-fenêtrage](#52)
+  - [Registres](#52)
   
 ---
 <!-- transition: fade -->
