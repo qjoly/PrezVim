@@ -22,8 +22,3 @@ Pour simplifier le déploiement, ce projet est basé sur Docker. Si celui-ci est
 ```
 
 Le diaporama sera accessible sur l'URL : http://localhost:8080
-
-## Related
-
-[Markdown-slides](https://gitlab.com/da_doomer/markdown-slides)
-aa
