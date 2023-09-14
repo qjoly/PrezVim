@@ -9,8 +9,8 @@ footer: "[Auteur](https://thebidouilleur.xyz)"
 titre: 'CyberPrez #03 - VIM'
 description: Vim avec une tasse de café
 author: Quentin JOLY
-keywords: vim,thebidouilleur,tasse-de-cafe
-url: https://thebidouilleur.xyz/
+keywords: vim,thebidouilleur,tasse-de-cafe, vim avec une tasse de café, Quentin JOLY, Apprendre Vim
+url: https://une-tasse-de.cafe
 ---
 
 <style>
@@ -41,7 +41,23 @@ section.sommaire li {
 <!-- transition: cover -->
 
 <title> Vim avec une tasse de café </title>
-<script defer data-domain="vim.avec.une-tasse-de.cafe" src="https://stats.192168128.xyz/js/plausible.js"></script>
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//mat.une-tasse-de.cafe/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '2']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//mat.une-tasse-de.cafe/matomo.php?idsite=2&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
 
 CyberPrez #03 - VIM
 # Découvrir Vim 
