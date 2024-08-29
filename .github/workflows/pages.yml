@@ -11,6 +11,10 @@ on:
       - closed
 jobs:
   build:
+    permissions:
+      contents: read
+      deployments: write
+      statuses: write
     runs-on: ubuntu-latest
     steps:
 
@@ -38,17 +42,11 @@ jobs:
         env:
           MARP_USER: root:root
 
-      - name: Marp Build (pptx)
-        uses: docker://marpteam/marp-cli:v3.4.0
+      - name: Publish
+        uses: cloudflare/pages-action@1
         with:
-          args: slide-deck.md -o build/PrezVim.pptx --pptx --bespoke.progress --template bespoke --allow-local-files
-        env:
-          MARP_USER: root:root
-
-      - name: Deploy production
-        if: ${{ github.event_name == 'push' }}
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: ./build/
-
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: prezvim
+          directory: build
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
