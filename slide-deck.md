@@ -5,7 +5,7 @@ markdown.marp.enableHtml: true
 paginate: true
 class: invert
 header: 'Découvrir Vim'
-footer: "[Auteur](https://thebidouilleur.xyz)"
+footer: "[Auteur](https://une-tasse-de.cafe)"
 titre: 'CyberPrez #03 - VIM'
 description: Vim avec une tasse de café
 author: Quentin JOLY
