@@ -30,14 +30,14 @@ jobs:
             cp -R videos build/
 
       - name: Marp Build (Html)
-        uses: docker://marpteam/marp-cli:v4.1.1
+        uses: docker://marpteam/marp-cli:v4.1.2
         with:
           args: slide-deck.md -o build/index.html --html --bespoke.progress --template bespoke
         env:
           MARP_USER: root:root
           
       - name: Marp Build (pdf)
-        uses: docker://marpteam/marp-cli:v4.1.1
+        uses: docker://marpteam/marp-cli:v4.1.2
         with:
           args: slide-deck.md -o build/PrezVim.pdf --pdf --bespoke.progress --template bespoke --allow-local-files
         env:
